@@ -1,0 +1,27 @@
+/**
+ * In a scheduling application (like Calendly or Cal.com),
+ * you cannot allow clients to book appointments at any random hour of the day.
+ * You need a structured way for hosts to define their working hours—for example,
+ * "I am available on Mondays from 9:00 AM to 5:00 PM, and on Fridays from 1:00 PM to 4:00 PM."
+ * The AvailabilityRule model acts as the foundational engine for this logic by breaking a user's weekly recurring
+ * calendar down into predictable time windows:
+ * When an external client visits a booking page, your backend fetches these rules for the host.
+ * If a user has a rule for weekday: 1 (Monday) from "09:00" to "17:00", your application logic chunks that 8-hour block into individual,
+ * bookable interview slots (e.g., 30-minute increments).
+ */
+
+model AvailabilityRule {
+  id     Int @id @default(autoincrement())
+  userId Int
+
+  weekday   Int /// Represented as an integer mapping to the day of the week (e.g., 0-6 or 1-7)
+  startTime String
+  endTime   String
+  timezone  String  @default("UTC")
+  isActive  Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("availability_rules")
+}

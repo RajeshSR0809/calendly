@@ -1,0 +1,26 @@
+/**
+ * A single user rarely offers just one type of meeting. A host might want to offer a quick
+ * "15-Minute Discovery Call" over the phone, as well as a "60-Minute Deep Dive" over Zoom.
+ * It dictates exactly how much time to block off on the calendar (durationMinutes) and where the meeting happens (locationType).
+ */
+
+model EventType {
+  id          Int     @id @default(autoincrement())
+  hostId      Int
+  title       String
+  description String?
+  slug        String
+  isActive    Boolean
+
+  durationMinutes Int
+  locationType    String /// The medium where the meeting takes place (e.g., "ONLNE", "IN_PERSON").
+  locationValue   String? /// The dynamic link or physical address details corresponding to the locationType.
+
+  bufferBeforMinutes Int
+  bufferAfterMinutes Int
+
+  createdDt DateTime @default(now())
+  updatedDt DateTime @updatedAt
+
+  @@map("event_types")
+}
