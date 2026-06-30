@@ -1,0 +1,27 @@
+/**
+ * table is designed to handle calendar overrides.
+ * In scheduling systems, users have standard weekly routines (e.g., Monday–Friday, 9 AM–5 PM).
+ * This table steps in to handle the rule-breakers: vacations, medical leave, or sudden emergencies
+ * where someone is unexpectedly busy (or unexpectedly free).
+ * By separating date from startDate/endDate, the system allows for both all-day events and partial-day blocks.
+ * All-Day Scenario: date is populated, while startDate and endDate remain null.
+ * Partial-Day Scenario: startDate and endDate define the exact window (e.g., 1:00 PM to 3:00 PM).
+ */
+
+model AvailabilityException {
+  id Int @id @default(autoincrement())
+
+  date      DateTime  @db.Date
+  startDate DateTime?
+  endDate   DateTime?
+  timezone  String    @default("UTC")
+
+  type String /// The category of the exception (e.g., "HOLIDAY", "TIME_OFF", "CUSTOM_HOURS")
+
+  reason String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+
+  @@map("availability_exception")
+}

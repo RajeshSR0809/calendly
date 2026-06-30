@@ -22,5 +22,8 @@ model EventType {
   createdDt DateTime @default(now())
   updatedDt DateTime @updatedAt
 
+  host User @relation(fields: [hostId], references: [id], onDelete: Cascade)
+
+  @@index([hostId, slug])
   @@map("event_types")
 }

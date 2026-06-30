@@ -1,0 +1,13 @@
+model Slot {
+  id Int @id @default(autoincrement())
+
+  hostId  Int
+  startAt String
+  endAt   String
+  status  String @default("AVAILABLE")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("slots")
+}
