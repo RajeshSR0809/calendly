@@ -14,7 +14,7 @@ model AvailabilityRule {
   id     Int @id @default(autoincrement())
   userId Int
 
-  weekday   Int /// Represented as an integer mapping to the day of the week (e.g., 0-6 or 1-7)
+  weekday   Int /// Represented as an integer mapping to the day of the week (e.g., 0-6 )
   startTime String
   endTime   String
   timezone  String  @default("UTC")

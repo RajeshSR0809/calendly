@@ -1,0 +1,32 @@
+/* 
+
+The Booking model represents a confirmed or pending transactional appointment between 
+two parties: the Host (tracked via userId) and the Invitee (the client or guest).
+
+Think of it as the source of truth for an actual event on the calendar. 
+While previous AvailabilityException model handled the rules of when someone could be booked, 
+this model handles the result—an actual, scheduled block of time where a meeting will take place.
+ */
+
+model Booking {
+  id Int @id @default(autoincrement())
+
+  userId      Int
+  slotId      Int
+  eventTypeId Int
+  status      String @default("PENDING")
+
+  inviteeEmail  String
+  inviteeName   String
+  inviteeeNotes String?
+
+  meetLink        String?
+  calendarEventId String?
+
+  cancelledAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("bookings")
+}
