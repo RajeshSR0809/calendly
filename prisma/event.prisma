@@ -19,10 +19,13 @@ model EventType {
   bufferBeforMinutes Int
   bufferAfterMinutes Int
 
-  createdDt DateTime @default(now())
-  updatedDt DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   host User @relation(fields: [hostId], references: [id], onDelete: Cascade)
+
+  slot     Slot[]
+  bookings Booking[]
 
   @@index([hostId, slug])
   @@map("event_types")
