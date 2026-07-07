@@ -13,10 +13,10 @@ model AvailabilityException {
 
   userId Int
 
-  date      DateTime  @db.Date
-  startDate DateTime?
-  endDate   DateTime?
-  timezone  String    @default("UTC")
+  date      DateTime @db.Date
+  startTime String?
+  endTime   String?
+  timezone  String   @default("UTC")
 
   type String /// The category of the exception (e.g., "HOLIDAY", "TIME_OFF", "CUSTOM_HOURS")
 
