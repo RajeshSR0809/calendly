@@ -4,9 +4,9 @@ model Slot {
   hostId Int
 
   eventTypeId Int
-  startAt     String
-  endAt       String
-  status      String @default("AVAILABLE")
+  startAt     DateTime
+  endAt       DateTime
+  status      String   @default("AVAILABLE")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

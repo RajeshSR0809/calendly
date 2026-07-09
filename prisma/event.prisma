@@ -16,8 +16,8 @@ model EventType {
   locationType    String /// The medium where the meeting takes place (e.g., "ONLNE", "IN_PERSON").
   locationValue   String? /// The dynamic link or physical address details corresponding to the locationType.
 
-  bufferBeforMinutes Int
-  bufferAfterMinutes Int
+  bufferBeforeMinutes Int
+  bufferAfterMinutes  Int
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

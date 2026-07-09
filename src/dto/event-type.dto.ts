@@ -12,7 +12,7 @@ export const createEventTypeSchema = z.object({
     durationMinutes: z.number().min(15).max(120).default(30),
     locationType: z.enum(["online", "in-person"]).default("online"),
     locationValue: z.string().optional(),
-    bufferBeforMinutes: z.number().min(0).max(120).default(0),
+    bufferBeforeMinutes: z.number().min(0).max(120).default(0),
     bufferAfterMinutes: z.number().min(0).max(120).default(0),
 
 });
