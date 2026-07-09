@@ -14,7 +14,7 @@ interface ErrorPayload<T> extends SuccessPayload<T> {
 }
 
 
-export function sendSuccess<T>(res: Response, data: T, statusCode: number, message?: string): void {
+export function sendSuccess<T>(res: Response, data: T, statusCode: number=200, message?: string): void {
     const body: SuccessPayload<T> = {
         success: true,
         data: data,

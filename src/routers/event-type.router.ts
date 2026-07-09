@@ -1,8 +1,15 @@
 import { Router } from "express";
-import { list } from "../controllers/event-type.controller.js";
+import { create, getById, list, remove, update } from "../controllers/event-type.controller.js";
+import { createEventTypeSchema, updateEventTypeSchema } from "../dto/event-type.dto.js";
+import { requireUserId } from "../middlewares/require-user-id.js";
+import { validate } from "../middlewares/validate.js";
 
-const eventTypeRouter:  Router = Router();
+export const eventTypeRouter: Router = Router();
 
+eventTypeRouter.use(requireUserId);
 
 eventTypeRouter.get('/', list);
-export default eventTypeRouter;
+eventTypeRouter.get('/:id', getById);
+eventTypeRouter.post('/', validate(createEventTypeSchema), create);
+eventTypeRouter.patch('/:id', validate(updateEventTypeSchema), update);
+eventTypeRouter.delete('/:id', remove);
