@@ -17,7 +17,7 @@ model Slot {
   bookings Booking[]
 
   @@unique([eventTypeId, startAt, endAt])
-  @@index([eventTypeId, startAt, endAt])
-  @@index([eventTypeId, startAt])
+  @@index([hostId, startAt])
+  @@index([eventTypeId, startAt, status])
   @@map("slots")
 }
