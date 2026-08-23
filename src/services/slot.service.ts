@@ -5,7 +5,6 @@ import { findActiveRulesByUser, findExceptionsByUserInRange } from "../repositor
 import { findActiveEventTypesByHost } from "../repositories/event-type.repository.js";
 import { bookSlot, findBookedSlotsByHostInRange, findFutureSlotsByEventTypeInRange, upsertAvailableSlot } from "../repositories/slot.repository.js";
 import { applyExceptionsForDate, overlapsBooked, splitIntoSlots, TimeWindow, windowsForWeekdayRule } from "./slot-generation.service.js";
-import { endianness } from "node:os";
 
 export interface RegenerateHostSlotsInput {
     hostId: number;
